@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock, mock_open
 from pathlib import Path
-from audio_processer import AudioTranscriber
+from pyaudiocook import AudioTranscriber
 
 class TestAudioTranscriber(unittest.TestCase):
   def test_initialization(self):
@@ -13,7 +13,7 @@ class TestAudioTranscriber(unittest.TestCase):
     with self.assertRaises(Exception):
         AudioTranscriber(Path('audio1.wav'), mode='invalid_mode')
 
-  @patch('audio_processer.audio_transcriber.whisper')
+  @patch('pyaudiocook.audio_transcriber.whisper')
   def test_transcribe_local(self, mock_whisper):
       mock_model = MagicMock()
       mock_model.transcribe.return_value = {'text': 'Test transcript'}
@@ -26,7 +26,7 @@ class TestAudioTranscriber(unittest.TestCase):
       mock_model.transcribe.assert_called_once_with('audio1.wav')
       self.assertEqual(transcriber.texts, ['Test transcript'])
 
-  @patch('audio_processer.audio_transcriber.OpenAI')
+  @patch('pyaudiocook.audio_transcriber.OpenAI')
   @patch('builtins.open', new_callable=mock_open)
   def test_transcribe_remote(self, mock_open_file, mock_openai):
       # Mock OpenAI client and its response

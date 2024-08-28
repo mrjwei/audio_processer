@@ -1,8 +1,8 @@
-# audio_processer
+# pyaudiocook
 
 A Python package for recording and transcribing audio.
 
-- [audio\_processer](#audio_processer)
+- [pyaudiocook](#pyaudiocook)
   - [Installation](#installation)
   - [Usage](#usage)
     - [AudioRecorder](#audiorecorder)
@@ -18,7 +18,7 @@ A Python package for recording and transcribing audio.
 ## Installation
 
 ```bash
-pip install audio_processer
+pip install pyaudiocook
 ```
 
 ## Usage

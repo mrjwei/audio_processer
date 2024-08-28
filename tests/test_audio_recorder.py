@@ -2,10 +2,10 @@ import unittest
 from unittest.mock import patch, MagicMock
 import numpy as np
 import time
-from audio_processer import AudioRecorder
+from pyaudiocook import AudioRecorder
 
 class TestAudioRecorder(unittest.TestCase):
-  @patch('audio_processer.audio_recorder.sd.InputStream')
+  @patch('pyaudiocook.audio_recorder.sd.InputStream')
   def test_start_recording(self, mock_inputstream):
     mock_inputstream.return_value.__enter__.return_value = MagicMock()
 
@@ -17,7 +17,7 @@ class TestAudioRecorder(unittest.TestCase):
     self.assertIsNotNone(recorder.audio_thread)
     self.assertEqual(recorder.recordings, [])
 
-  @patch('audio_processer.audio_recorder.sd.InputStream')
+  @patch('pyaudiocook.audio_recorder.sd.InputStream')
   def test_stop_recording(self, mock_inputstream):
       mock_inputstream.return_value.__enter__.return_value = MagicMock()
 
@@ -42,7 +42,7 @@ class TestAudioRecorder(unittest.TestCase):
       recorder.toggle_recording()
       self.assertFalse(recorder.is_paused)
 
-  @patch('audio_processer.audio_recorder.sd.InputStream')
+  @patch('pyaudiocook.audio_recorder.sd.InputStream')
   def test_callback(self, mock_inputstream):
       mock_inputstream.return_value.__enter__.return_value = MagicMock()
 
